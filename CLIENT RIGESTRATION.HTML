@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EthioHealth - Ask a Doctor</title>
+<style>
+body { font-family:"Poppins", sans-serif; margin:0; background:#f8f9fa; Color:#333; text-align:center;}
+header { background:#1b7a6f; color:white; padding:15px;}
+h1 { margin:0; font-size:24px;}
+.container { max-width:700px; margin:30px auto; background:white; padding:30px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1);}
+button { background-color:#1b7a6f; color:white; border:none; padding:12px 20px; margin:10px; border-radius:8px; font-size:16px; cursor:pointer;}
+button:hover { background-color:#15665d;}
+input, textarea, select { width:100%; padding:10px; margin:5px 0 15px 0; border-radius:8px; border:1px solid #ccc; font-size:16px;}
+textarea { resize:vertical;}
+.answer { background:#e0f7f1; padding:15px; border-radius:10px; margin-top:15px; text-align:left;}
+.success-message { color:green; font-weight:bold; display:none;}
+.error-message { color:red; font-weight:bold; display:none;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>EthioHealth - Ask a Doctor</h1>
+</header>
+
+<!-- ROLE SELECTION -->
+<div class="container" id="roleSelection">
+  <h2>Who are you?</h2>
+  <button onclick="showPatientAuth()">I am a Patient</button>
+  <button onclick="showDoctorAuth()">I am a Doctor</button>
+</div>
+
+<!-- PATIENT AUTH -->
+<div class="container" id="patientAuth" style="display:none;">
+  <h2>Patient Sign Up / Sign In</h2>
+  <div id="patientMessage" class="error-message"></div>
+  <input type="text" id="patientName" placeholder="Your Name">
+  <input type="email" id="patientEmail" placeholder="Your Email">
+  <input type="password" id="patientPassword" placeholder="Password">
+  <button onclick="patientSignup()">Sign Up</button>
+  <button onclick="patientSignin()">Sign In</button>
+  <button onclick="backToRole()">Back</button>
+</div>
+
+<!-- DOCTOR AUTH -->
+<div class="container" id="doctorAuth" style="display:none;">
+  <h2>Doctor Sign Up / Sign In</h2>
+  <div id="doctorMessage" class="error-message"></div>
+  <input type="text" id="doctorName" placeholder="Doctor Name">
+  <input type="email" id="doctorEmail" placeholder="Doctor Email">
+  <input type="password" id="doctorPassword" placeholder="Password">
+  <button onclick="doctorSignup()">Sign Up</button>
+  <button onclick="doctorSignin()">Sign In</button>
+  <button onclick="backToRole()">Back</button>
+</div>
+
+<!-- PATIENT PANEL -->
+<div class="container" id="patientPanel" style="display:none;">
+  <h2>Ask a Question</h2>
+  <div class="success-message" id="successMessage">Question submitted!</div>
+  <label for="topic">Topic:</label>
+  <select id="topic">
+    <option value="general">General Health</option>
+    <option value="child">Child Health</option>
+    <option value="women">Women’s Health</option>
+    <option value="mental">Mental Health</option>
+    <option value="nutrition">Nutrition</option>
+  </select>
+  <label for="question">Your Question:</label>
+  <textarea id="question" rows="4" placeholder="Describe your symptoms or question..."></textarea>
+  <button onclick="submitQuestion()">Send Question</button>
+
+  <h3>Your Answers</h3>
+  <div id="answersContainer"></div>
+
+  <button onclick="logoutPatient()">Logout</button>
+</div>
+
+<!-- DOCTOR PANEL -->
+<div class="container" id="doctorPanel" style="display:none;">
+  <h2>Patient Questions</h2>
+  <div id="patientQuestionsContainer"></div>
+  <button onclick="logoutDoctor()">Logout</button>
+</div>
+
+<script>
+// INITIALIZE LOCAL STORAGE
+if(!localStorage.getItem('patients')) localStorage.setItem('patients', JSON.stringify([]));
+if(!localStorage.getItem('doctors')) localStorage.setItem('doctors', JSON.stringify([]));
+
+let currentPatient = null;
+let currentDoctor = null;
+
+// === ROLE SELECTION ===
+function showPatientAuth() { 
+  document.getElementById('roleSelection').style.display='none'; 
+  document.getElementById('patientAuth').style.display='block'; 
+}
+function showDoctorAuth() { 
+  document.getElementById('roleSelection').style.display='none'; 
+  document.getElementById('doctorAuth').style.display='block'; 
+}
+function backToRole() { 
+  document.getElementById('roleSelection').style.display='block'; 
+  document.getElementById('patientAuth').style.display='none'; 
+  document.getElementById('doctorAuth').style.display='none';
+}
+
+// === PATIENT FUNCTIONS ===
+function patientSignup() {
+  const name=document.getElementById('patientName').value.trim();
+  const email=document.getElementById('patientEmail').value.trim();
+  const password=document.getElementById('patientPassword').value;
+  if(!name || !email || !password) return alert('Fill all fields');
+  let patients=JSON.parse(localStorage.getItem('patients'));
+  if(patients.some(p=>p.email===email)) return alert('Email already registered');
+  patients.push({name,email,password,questions:[]});
+  localStorage.setItem('patients',JSON.stringify(patients));
+  alert('Patient registered! Now Sign In.');
+}
+function patientSignin() {
+  const email=document.getElementById('patientEmail').value.trim();
+  const password=document.getElementById('patientPassword').value;
+  let patients=JSON.parse(localStorage.getItem('patients'));
+  let patient=patients.find(p=>p.email===email);
+  if(!patient) return alert('Patient not found');
+  if(patient.password!==password) return alert('Incorrect password');
+  currentPatient=patient;
+  document.getElementById('patientAuth').style.display='none';
+  document.getElementById('patientPanel').style.display='block';
+  displayAnswers();
+}
+function submitQuestion() {
+  const topic=document.getElementById('topic').value;
+  const question=document.getElementById('question').value.trim();
+  if(!question) return alert('Enter a question');
+  let patients=JSON.parse(localStorage.getItem('patients'));
+  let idx=patients.findIndex(p=>p.email===currentPatient.email);
+  patients[idx].questions.push({topic,question,answer:""});
+  localStorage.setItem('patients',JSON.stringify(patients));
+  currentPatient=patients[idx];
+  document.getElementById('question').value='';
+  document.getElementById('successMessage').style.display='block';
+  displayAnswers();
+}
+function displayAnswers() {
+  const container=document.getElementById('answersContainer');
+  container.innerHTML='';
+  if(!currentPatient.questions.length) container.innerHTML='<p>No questions yet.</p>';
+  currentPatient.questions.forEach(q=>{
+    const div=document.createElement('div');
+    div.className='answer';
+    div.innerHTML=`<strong>Question (${q.topic}):</strong> ${q.question}<br>
+                   <strong>Doctor's Answer:</strong> ${q.answer||'<em>Not answered yet</em>'}`;
+    container.appendChild(div);
+  });
+}
+function logoutPatient() { currentPatient=null; document.getElementById('patientPanel').style.display='none'; document.getElementById('roleSelection').style.display='block'; }
+
+// === DOCTOR FUNCTIONS ===
+function doctorSignup() {
+  const name=document.getElementById('doctorName').value.trim();
+  const email=document.getElementById('doctorEmail').value.trim();
+  const password=document.getElementById('doctorPassword').value;
+  if(!name || !email || !password) return alert('Fill all fields');
+  let doctors=JSON.parse(localStorage.getItem('doctors'));
+  if(doctors.some(d=>d.email===email)) return alert('Email already registered');
+  doctors.push({name,email,password});
+  localStorage.setItem('doctors',JSON.stringify(doctors));
+  alert('Doctor registered! Now Sign In.');
+}
+function doctorSignin() {
+  const email=document.getElementById('doctorEmail').value.trim();
+  const password=document.getElementById('doctorPassword').value;
+  let doctors=JSON.parse(localStorage.getItem('doctors'));
+  let doctor=doctors.find(d=>d.email===email);
+  if(!doctor) return alert('Doctor not found');
+  if(doctor.password!==password) return alert('Incorrect password');
+  currentDoctor=doctor;
+  document.getElementById('doctorAuth').style.display='none';
+  document.getElementById('doctorPanel').style.display='block';
+  displayPatientQuestions();
+}
+function displayPatientQuestions() {
+  const container=document.getElementById('patientQuestionsContainer');
+  container.innerHTML='';
+  let patients=JSON.parse(localStorage.getItem('patients'));
+  if(!patients.length) return container.innerHTML='<p>No patients yet.</p>';
+  patients.forEach((p,pi)=>{
+    p.questions.forEach((q,qi)=>{
+      const div=document.createElement('div');
+      div.className='answer';
+      div.innerHTML=`<strong>Patient:</strong> ${p.name} (${p.email})<br>
+                     <strong>Topic:</strong> ${q.topic}<br>
+                     <strong>Question:</strong> ${q.question}<br>
+                     <label>Answer:</label>
+                     <textarea id="answer_${pi}_${qi}">${q.answer}</textarea>
+                     <button onclick="saveAnswer(${pi},${qi})">Save Answer</button>`;
+      container.appendChild(div);
+    });
+  });
+}
+function saveAnswer(pi,qi){
+  let patients=JSON.parse(localStorage.getItem('patients'));
+  const val=document.getElementById(`answer_${pi}_${qi}`).value;
+  patients[pi].questions[qi].answer=val;
+  localStorage.setItem('patients',JSON.stringify(patients));
+  alert('Answer saved!');
+  displayPatientQuestions();
+}
+function logoutDoctor() { currentDoctor=null; document.getElementById('doctorPanel').style.display='none'; document.getElementById('roleSelection').style.display='block'; }
+</script>
+
+</body>
+</html>

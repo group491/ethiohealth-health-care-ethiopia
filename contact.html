@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us - EthiHealth</title>
+<style>
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f6f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+}
+
+form {
+  background-color: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+form h3 {
+  text-align: center;
+  color: #1b7a6f;
+  font-size: 32px;
+  margin-bottom: 0px;
+}
+
+label {
+  font-weight: 600;
+  color: #1b7a6f;
+  margin-bottom: 5px;
+  display: block;
+  font-size: 16px;
+}
+
+input, textarea {
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s;
+  width: 100%;
+}
+
+input:focus, textarea:focus {
+  border-color: #1b7a6f;
+  box-shadow: 0 0 8px rgba(27,122,111,0.2);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+button {
+  background-color: #1b7a6f;
+  color: white;
+  padding: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+button:hover {
+  background-color: #138168;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 500px) {
+  form {
+    padding: 30px 20px;
+  }
+}
+</style>
+</head>
+<body>
+
+<form action="https://api.web3forms.com/submit" method="POST">
+    <h3>Contact Us</h3>
+    <input type="hidden" name="access_key" value="209f7d88-4c0f-4e13-b3b2-a830bf84de17">
+    
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+
+    <button type="submit">send</button>
+</form>
+
+</body>
+</html>

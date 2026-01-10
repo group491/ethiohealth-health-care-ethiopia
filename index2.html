@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Telemedicine System</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0a7cff, #00c6ff);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: white;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+h2 {
+  margin-top: 0;
+  color: #0a7cff;
+}
+
+select, input, button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background: #0a7cff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #005fd1;
+}
+
+#videos {
+  display: none;
+}
+
+video {
+  width: 100%;
+  max-height: 40vh;
+  background: black;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>Telemedicine Consultation</h2>
+
+<div id="join">
+  <select id="role">
+    <option value="">Choose Role</option>
+    <option value="doctor">Doctor</option>
+    <option value="patient">Patient</option>
+  </select>
+
+  <input id="room" placeholder="Room name (example: dr-ahmed)">
+  <button onclick="start()">Join Call</button>
+</div>
+
+<div id="videos">
+  <video id="local" autoplay muted playsinline></video>
+  <video id="remote" autoplay playsinline></video>
+</div>
+
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+const socket = io();
+let pc;
+let roomName;
+
+async function start() {
+  const role = document.getElementById("role").value;
+  roomName = document.getElementById("room").value;
+
+  if (!role || !roomName) {
+    alert("Please choose role and room");
+    return;
+  }
+
+  document.getElementById("join").style.display = "none";
+  document.getElementById("videos").style.display = "block";
+
+  pc = new RTCPeerConnection({
+    iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
+  });
+
+  const stream = await navigator.mediaDevices.getUserMedia({
+    video: true,
+    audio: true
+  });
+
+  document.getElementById("local").srcObject = stream;
+  stream.getTracks().forEach(t => pc.addTrack(t, stream));
+
+  pc.ontrack = e => {
+    document.getElementById("remote").srcObject = e.streams[0];
+  };
+
+  pc.onicecandidate = e => {
+    if (e.candidate) {
+      socket.emit("signal", { room: roomName, signal: e.candidate });
+    }
+  };
+
+  socket.emit("join-room", roomName);
+
+  socket.on("other-joined", async () => {
+    const offer = await pc.createOffer();
+    await pc.setLocalDescription(offer);
+    socket.emit("signal", { room: roomName, signal: offer });
+  });
+
+  socket.on("signal", async signal => {
+    if (signal.type === "offer") {
+      await pc.setRemoteDescription(signal);
+      const answer = await pc.createAnswer();
+      await pc.setLocalDescription(answer);
+      socket.emit("signal", { room: roomName, signal: answer });
+    } 
+    else if (signal.type === "answer") {
+      await pc.setRemoteDescription(signal);
+    } 
+    else {
+      await pc.addIceCandidate(signal);
+    }
+  });
+}
+</script>
+
+</body>
+</html>

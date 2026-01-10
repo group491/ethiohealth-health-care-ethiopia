@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EthiHealth - Trusted Health Information</title>
+<style>
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  background-color: #f4f6f8;
+  color: #333;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+a { text-decoration: none; color: inherit; }
+header {
+  background-color: #1b7a6f;
+  color: white;
+  padding: 15px 50px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+header .logo-title {
+  display: flex;
+  align-items: center;
+}
+header .logo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-image: url("logo.png");
+  background-size: cover;
+  background-position: center;
+  margin-right: 15px;
+  border: 2px solid white;
+  flex-shrink: 0;
+}
+header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+nav {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+nav a {
+  margin-left: 15px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+nav a:hover {
+  text-decoration: underline;
+  color: #ffd700;
+}
+.menu-toggle {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+  user-select: none;
+  margin-left: 15px;
+}
+.hero {
+  background: linear-gradient(rgba(27,122,111,0.6), rgba(27,122,111,0.6)),
+  url('https://cdn.pixabay.com/photo/2020/05/28/14/56/health-5237047_1280.jpg')
+  center/cover no-repeat;
+  color: white;
+  text-align: center;
+  padding: 120px 20px;
+}
+.hero h2 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+.hero p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+.hero button {
+  background-color: #ffd700;
+  color: #1b7a6f;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+.section h3 {
+  color: #1b7a6f;
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.card h4 {
+  color: #1b7a6f;
+  margin-top: 0;
+  font-size: 22px;
+}
+.ad-container {
+  width: 99%;
+  overflow: hidden;
+  padding: 10px 0;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  border: rgba(255, 255, 255, 0.891) solid;
+  background-color: rgba(255, 255, 255, 0.659);
+  height: 100px;
+}
+.ad-text {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 25px;
+  font-weight: bold;
+  animation: scroll-right 10s linear infinite;
+}
+@keyframes scroll-right {
+  from { transform: translateX(400%); }
+  to { transform: translateX(-100%); }
+}
+footer {
+  background-color: #1b7a6f;
+  color: white;
+  text-align: center;
+  padding: 25px 20px;
+}
+@media (max-width: 775px) {
+  header {
+    padding: 15px 20px;
+  }
+  nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #1b7a6f;
+    position: absolute;
+    top: 100px;
+    left: 0;
+  }
+  nav a {
+    padding: 12px;
+    margin: 0;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.2);
+  }
+  nav.show {
+    display: flex;
+  }
+  .menu-toggle {
+    display: block;
+  }
+  .hero h2 {
+    font-size: 32px;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-title">
+    <div class="logo"></div>
+    <h1>EthioHealth info</h1>
+  </div>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <nav id="navMenu">
+    <a href="#">Home</a>
+    <a href="health-topics.html">Health Topics</a>
+    <a href="clinics.html">Health center around</a>
+    <a href="CLIENT RIGESTRATION.HTML">Sign up (Ask a Doctor)</a>
+    <a href="index.html">Emergency reporting</a>
+    <a href="index2.html">telemedicine</a>
+    <a href="about.html">Aboutus</a>
+    <a href="contact.html">contactus</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Your Trusted Source <br> for Health Information</h2>
+  <p>Reliable, easy-to-understand health tips for all Ethiopians.</p>
+  <button onclick="document.querySelector('.section').scrollIntoView({behavior:'smooth'})">Explore Topics</button>
+</section>
+
+<section class="section">
+  <h3>Popular Health Topics</h3>
+  <div class="cards">
+    <div class="card"><h4><a href="https://www.heart.org/en/healthy-living/healthy-eating"> Healthy Eating</a></h4></div>
+    <div class="card"><h4><a href="https://www.unicef.org/parenting/child-care"> Child Care</a></h4></div>
+    <div class="card"><h4><a href="https://www.who.int/news-room/fact-sheets/detail/mental-health-strengthening-our-response">Mental Health</a></h4></div>
+  </div>
+</section>
+
+<div class="ad-container">
+  <div class="ad-text">🔥 Advertisement place! 🔥</div>
+</div>
+
+<footer>
+  <p>© 2025 EthiOHealth info</p>
+  <p>Contact: ethihealth@gmail.com</p>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById("navMenu").classList.toggle("show");
+}
+</script>
+
+</body>
+</html>

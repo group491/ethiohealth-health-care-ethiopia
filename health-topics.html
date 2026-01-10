@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EthiHealth – Health Topics</title>
+
+<style>
+body {
+  font-family: Poppins, sans-serif;
+  margin: 0;
+  background: #f8f9fa;
+}
+
+header {
+  background: #1b7a6f;
+  color: white;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h2 {
+  text-align: center;
+  margin: 30px 0;
+  color: #1b7a6f;
+}
+
+.topics {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.topic {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.topic h4 {
+  color: #1b7a6f;
+  margin-top: 0;
+}
+
+.topic button {
+  background: none;
+  border: none;
+  color: #1b7a6f;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.details {
+  display: none;
+  margin-top: 15px;
+  font-size: 14px;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+footer {
+  background: #1b7a6f;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+}
+</style>
+
+<script>
+function toggleDetails(id) {
+  const el = document.getElementById(id);
+  el.style.display = el.style.display === "block" ? "none" : "block";
+}
+</script>
+</head>
+
+<body>
+
+<header>
+  <h1>EthiHealth</h1>
+</header>
+
+<h2>Major Health Topics in Ethiopia</h2>
+
+<div class="topics">
+
+<!-- MALARIA -->
+<div class="topic">
+<h4>Malaria</h4>
+<p>Mosquito-borne parasitic disease.</p>
+<button onclick="toggleDetails('d1')">Read More →</button>
+<div class="details" id="d1">
+<p><b>Description:</b> Malaria is a life-threatening disease caused by Plasmodium parasites transmitted through bites of infected female Anopheles mosquitoes.</p>
+<p><b>Symptoms:</b> Fever, chills, headache, sweating, nausea, vomiting, fatigue.</p>
+<p><b>Prevention:</b> Use insecticide-treated bed nets, indoor spraying, elimination of stagnant water.</p>
+<p><b>Treatment:</b> Antimalarial medicines provided at health facilities.</p>
+</div>
+</div>
+
+<!-- HIV/AIDS -->
+<div class="topic">
+<h4>HIV & AIDS</h4>
+<p>Virus that weakens the immune system.</p>
+<button onclick="toggleDetails('d2')">Read More →</button>
+<div class="details" id="d2">
+<p><b>Description:</b> HIV attacks the immune system and can lead to AIDS if untreated.</p>
+<p><b>Symptoms:</b> Weight loss, recurrent infections, fatigue, night sweats.</p>
+<p><b>Prevention:</b> Condom use, HIV testing, safe blood transfusion.</p>
+<p><b>Treatment:</b> Lifelong antiretroviral therapy (ART).</p>
+</div>
+</div>
+
+<!-- TUBERCULOSIS -->
+<div class="topic">
+<h4>Tuberculosis (TB)</h4>
+<p>Airborne bacterial lung disease.</p>
+<button onclick="toggleDetails('d3')">Read More →</button>
+<div class="details" id="d3">
+<p><b>Description:</b> TB is caused by Mycobacterium tuberculosis and mainly affects the lungs.</p>
+<p><b>Symptoms:</b> Persistent cough, chest pain, weight loss, night sweats.</p>
+<p><b>Prevention:</b> Early diagnosis, BCG vaccination, good ventilation.</p>
+<p><b>Treatment:</b> Combination antibiotics for at least 6 months.</p>
+</div>
+</div>
+
+<!-- CHOLERA -->
+<div class="topic">
+<h4>Cholera</h4>
+<p>Severe diarrheal disease.</p>
+<button onclick="toggleDetails('d4')">Read More →</button>
+<div class="details" id="d4">
+<p><b>Description:</b> Cholera is an acute diarrheal infection caused by contaminated food or water.</p>
+<p><b>Symptoms:</b> Profuse watery diarrhea, dehydration, vomiting.</p>
+<p><b>Prevention:</b> Clean water, sanitation, handwashing.</p>
+<p><b>Treatment:</b> Oral rehydration solution (ORS), IV fluids.</p>
+</div>
+</div>
+
+<!-- COVID-19 -->
+<div class="topic">
+<h4>COVID-19</h4>
+<p>Viral respiratory infection.</p>
+<button onclick="toggleDetails('d5')">Read More →</button>
+<div class="details" id="d5">
+<p><b>Description:</b> COVID-19 is caused by SARS-CoV-2 virus.</p>
+<p><b>Symptoms:</b> Fever, cough, breathing difficulty, loss of taste.</p>
+<p><b>Prevention:</b> Vaccination, hand hygiene, masks.</p>
+<p><b>Treatment:</b> Supportive care, oxygen for severe cases.</p>
+</div>
+</div>
+
+<!-- DIABETES -->
+<div class="topic">
+<h4>Diabetes</h4>
+<p>High blood sugar disorder.</p>
+<button onclick="toggleDetails('d6')">Read More →</button>
+<div class="details" id="d6">
+<p><b>Description:</b> Diabetes occurs when blood glucose remains high.</p>
+<p><b>Symptoms:</b> Excess thirst, frequent urination, fatigue.</p>
+<p><b>Prevention:</b> Healthy diet, physical activity.</p>
+<p><b>Treatment:</b> Insulin or oral medications.</p>
+</div>
+</div>
+
+<!-- HYPERTENSION -->
+<div class="topic">
+<h4>Hypertension</h4>
+<p>High blood pressure.</p>
+<button onclick="toggleDetails('d7')">Read More →</button>
+<div class="details" id="d7">
+<p><b>Description:</b> Hypertension increases risk of heart disease and stroke.</p>
+<p><b>Symptoms:</b> Often none, sometimes headache.</p>
+<p><b>Prevention:</b> Reduce salt, exercise, avoid smoking.</p>
+<p><b>Treatment:</b> Lifestyle changes and medication.</p>
+</div>
+</div>
+
+<!-- ASTHMA -->
+<div class="topic">
+<h4>Asthma</h4>
+<p>Chronic lung disease.</p>
+<button onclick="toggleDetails('d8')">Read More →</button>
+<div class="details" id="d8">
+<p><b>Description:</b> Asthma causes airway inflammation and narrowing.</p>
+<p><b>Symptoms:</b> Wheezing, coughing, breathlessness.</p>
+<p><b>Prevention:</b> Avoid triggers.</p>
+<p><b>Treatment:</b> Inhalers and medications.</p>
+</div>
+</div>
+
+<!-- MEASLES -->
+<div class="topic">
+<h4>Measles</h4>
+<p>Highly contagious viral disease.</p>
+<button onclick="toggleDetails('d9')">Read More →</button>
+<div class="details" id="d9">
+<p><b>Description:</b> Measles spreads through air droplets.</p>
+<p><b>Symptoms:</b> Fever, rash, cough, red eyes.</p>
+<p><b>Prevention:</b> Vaccination.</p>
+<p><b>Treatment:</b> Supportive care.</p>
+</div>
+</div>
+
+<!-- TYPHOID -->
+<div class="topic">
+<h4>Typhoid Fever</h4>
+<p>Bacterial foodborne disease.</p>
+<button onclick="toggleDetails('d10')">Read More →</button>
+<div class="details" id="d10">
+<p><b>Description:</b> Caused by Salmonella typhi.</p>
+<p><b>Symptoms:</b> Prolonged fever, abdominal pain.</p>
+<p><b>Prevention:</b> Clean food and water.</p>
+<p><b>Treatment:</b> Antibiotics.</p>
+</div>
+</div>
+<!-- 11 Hepatitis B -->
+<div class="topic">
+<h4>Hepatitis B</h4>
+<p>Viral liver infection.</p>
+<button onclick="toggleDetails('d11')">Read More →</button>
+<div class="details" id="d11">
+<p><b>Description:</b> Hepatitis B is a viral infection that attacks the liver and can become chronic.</p>
+<p><b>Symptoms:</b> Jaundice, fatigue, abdominal pain, dark urine.</p>
+<p><b>Prevention:</b> Vaccination, safe sex, screened blood.</p>
+<p><b>Treatment:</b> Antiviral medicines and monitoring.</p>
+</div>
+</div>
+
+<!-- 12 Hepatitis C -->
+<div class="topic">
+<h4>Hepatitis C</h4>
+<p>Blood-borne liver disease.</p>
+<button onclick="toggleDetails('d12')">Read More →</button>
+<div class="details" id="d12">
+<p><b>Description:</b> Hepatitis C causes liver inflammation and damage.</p>
+<p><b>Symptoms:</b> Fatigue, nausea, jaundice.</p>
+<p><b>Prevention:</b> Safe injections, screened blood.</p>
+<p><b>Treatment:</b> Antiviral therapy.</p>
+</div>
+</div>
+
+<!-- 13 Breast Cancer -->
+<div class="topic">
+<h4>Breast Cancer</h4>
+<p>Cancer affecting breast tissue.</p>
+<button onclick="toggleDetails('d13')">Read More →</button>
+<div class="details" id="d13">
+<p><b>Description:</b> Uncontrolled growth of breast cells.</p>
+<p><b>Symptoms:</b> Lump, nipple discharge, breast changes.</p>
+<p><b>Prevention:</b> Screening, healthy lifestyle.</p>
+<p><b>Treatment:</b> Surgery, chemotherapy, radiotherapy.</p>
+</div>
+</div>
+
+<!-- 14 Cervical Cancer -->
+<div class="topic">
+<h4>Cervical Cancer</h4>
+<p>Cancer of the cervix.</p>
+<button onclick="toggleDetails('d14')">Read More →</button>
+<div class="details" id="d14">
+<p><b>Description:</b> Caused mainly by HPV infection.</p>
+<p><b>Symptoms:</b> Abnormal vaginal bleeding.</p>
+<p><b>Prevention:</b> HPV vaccination, screening.</p>
+<p><b>Treatment:</b> Surgery, radiotherapy.</p>
+</div>
+</div>
+
+<!-- 15 Prostate Cancer -->
+<div class="topic">
+<h4>Prostate Cancer</h4>
+<p>Male reproductive cancer.</p>
+<button onclick="toggleDetails('d15')">Read More →</button>
+<div class="details" id="d15">
+<p><b>Description:</b> Cancer of the prostate gland.</p>
+<p><b>Symptoms:</b> Urinary difficulty.</p>
+<p><b>Prevention:</b> Regular screening.</p>
+<p><b>Treatment:</b> Surgery, radiotherapy.</p>
+</div>
+</div>
+
+<!-- 16 Mental Health -->
+<div class="topic">
+<h4>Mental Health</h4>
+<p>Psychological well-being.</p>
+<button onclick="toggleDetails('d16')">Read More →</button>
+<div class="details" id="d16">
+<p><b>Description:</b> Emotional and psychological health.</p>
+<p><b>Symptoms:</b> Anxiety, mood changes.</p>
+<p><b>Prevention:</b> Social support, stress management.</p>
+<p><b>Treatment:</b> Counseling, medication.</p>
+</div>
+</div>
+
+<!-- 17 Depression -->
+<div class="topic">
+<h4>Depression</h4>
+<p>Mood disorder.</p>
+<button onclick="toggleDetails('d17')">Read More →</button>
+<div class="details" id="d17">
+<p><b>Description:</b> Persistent feeling of sadness.</p>
+<p><b>Symptoms:</b> Loss of interest, fatigue.</p>
+<p><b>Prevention:</b> Social support.</p>
+<p><b>Treatment:</b> Therapy, antidepressants.</p>
+</div>
+</div>
+
+<!-- 18 Obesity -->
+<div class="topic">
+<h4>Obesity</h4>
+<p>Excess body fat.</p>
+<button onclick="toggleDetails('d18')">Read More →</button>
+<div class="details" id="d18">
+<p><b>Description:</b> Abnormal fat accumulation.</p>
+<p><b>Symptoms:</b> Breathlessness, fatigue.</p>
+<p><b>Prevention:</b> Balanced diet, exercise.</p>
+<p><b>Treatment:</b> Lifestyle changes.</p>
+</div>
+</div>
+
+<!-- 19 Malnutrition -->
+<div class="topic">
+<h4>Malnutrition</h4>
+<p>Nutrient deficiency.</p>
+<button onclick="toggleDetails('d19')">Read More →</button>
+<div class="details" id="d19">
+<p><b>Description:</b> Lack of essential nutrients.</p>
+<p><b>Symptoms:</b> Weight loss, weakness.</p>
+<p><b>Prevention:</b> Balanced nutrition.</p>
+<p><b>Treatment:</b> Nutritional supplementation.</p>
+</div>
+</div>
+
+<!-- 20 Diarrheal Diseases -->
+<div class="topic">
+<h4>Diarrheal Diseases</h4>
+<p>Frequent loose stools.</p>
+<button onclick="toggleDetails('d20')">Read More →</button>
+<div class="details" id="d20">
+<p><b>Description:</b> Caused by infections.</p>
+<p><b>Symptoms:</b> Diarrhea, dehydration.</p>
+<p><b>Prevention:</b> Clean water.</p>
+<p><b>Treatment:</b> ORS, zinc.</p>
+</div>
+</div>
+
+<!-- 21 Rabies -->
+<div class="topic">
+<h4>Rabies</h4>
+<p>Fatal viral disease.</p>
+<button onclick="toggleDetails('d21')">Read More →</button>
+<div class="details" id="d21">
+<p><b>Description:</b> Spread through animal bites.</p>
+<p><b>Symptoms:</b> Fever, hydrophobia.</p>
+<p><b>Prevention:</b> Vaccination.</p>
+<p><b>Treatment:</b> Post-exposure prophylaxis.</p>
+</div>
+</div>
+
+<!-- 22 Leprosy -->
+<div class="topic">
+<h4>Leprosy</h4>
+<p>Chronic bacterial disease.</p>
+<button onclick="toggleDetails('d22')">Read More →</button>
+<div class="details" id="d22">
+<p><b>Description:</b> Affects skin and nerves.</p>
+<p><b>Symptoms:</b> Skin patches, numbness.</p>
+<p><b>Prevention:</b> Early treatment.</p>
+<p><b>Treatment:</b> Multi-drug therapy.</p>
+</div>
+</div>
+
+<!-- 23 Epilepsy -->
+<div class="topic">
+<h4>Epilepsy</h4>
+<p>Neurological disorder.</p>
+<button onclick="toggleDetails('d23')">Read More →</button>
+<div class="details" id="d23">
+<p><b>Description:</b> Causes recurrent seizures.</p>
+<p><b>Symptoms:</b> Seizures, confusion.</p>
+<p><b>Prevention:</b> Injury prevention.</p>
+<p><b>Treatment:</b> Anti-epileptic drugs.</p>
+</div>
+</div>
+
+<!-- 24 Stroke -->
+<div class="topic">
+<h4>Stroke</h4>
+<p>Brain blood flow interruption.</p>
+<button onclick="toggleDetails('d24')">Read More →</button>
+<div class="details" id="d24">
+<p><b>Description:</b> Medical emergency.</p>
+<p><b>Symptoms:</b> Paralysis, speech problems.</p>
+<p><b>Prevention:</b> Control BP.</p>
+<p><b>Treatment:</b> Emergency care.</p>
+</div>
+</div>
+
+<!-- 25 Heart Disease -->
+<div class="topic">
+<h4>Heart Disease</h4>
+<p>Cardiovascular disorders.</p>
+<button onclick="toggleDetails('d25')">Read More →</button>
+<div class="details" id="d25">
+<p><b>Description:</b> Affects heart function.</p>
+<p><b>Symptoms:</b> Chest pain.</p>
+<p><b>Prevention:</b> Healthy lifestyle.</p>
+<p><b>Treatment:</b> Medication, surgery.</p>
+</div>
+</div>
+<!-- 26 Kidney Disease -->
+<div class="topic">
+<h4>Kidney Disease</h4>
+<p>Impaired kidney function.</p>
+<button onclick="toggleDetails('d26')">Read More →</button>
+<div class="details" id="d26">
+<p><b>Description:</b> Chronic kidney disease reduces the kidneys’ ability to filter waste.</p>
+<p><b>Symptoms:</b> Swelling, fatigue, reduced urine.</p>
+<p><b>Prevention:</b> Control diabetes and blood pressure.</p>
+<p><b>Treatment:</b> Medication, dialysis, transplant.</p>
+</div>
+</div>
+
+<!-- 27 Eye Diseases -->
+<div class="topic">
+<h4>Eye Diseases</h4>
+<p>Visual impairment conditions.</p>
+<button onclick="toggleDetails('d27')">Read More →</button>
+<div class="details" id="d27">
+<p><b>Description:</b> Includes cataract, glaucoma, and infections.</p>
+<p><b>Symptoms:</b> Blurred vision, eye pain.</p>
+<p><b>Prevention:</b> Regular eye checks.</p>
+<p><b>Treatment:</b> Medication or surgery.</p>
+</div>
+</div>
+
+<!-- 28 Dental Health -->
+<div class="topic">
+<h4>Dental Health</h4>
+<p>Oral and tooth health.</p>
+<button onclick="toggleDetails('d28')">Read More →</button>
+<div class="details" id="d28">
+<p><b>Description:</b> Poor oral hygiene leads to cavities and gum disease.</p>
+<p><b>Symptoms:</b> Tooth pain, bleeding gums.</p>
+<p><b>Prevention:</b> Brushing, flossing.</p>
+<p><b>Treatment:</b> Dental care and treatment.</p>
+</div>
+</div>
+
+<!-- 29 Skin Infections -->
+<div class="topic">
+<h4>Skin Infections</h4>
+<p>Bacterial, fungal, or viral skin diseases.</p>
+<button onclick="toggleDetails('d29')">Read More →</button>
+<div class="details" id="d29">
+<p><b>Description:</b> Infections affecting the skin layers.</p>
+<p><b>Symptoms:</b> Rash, itching, redness.</p>
+<p><b>Prevention:</b> Hygiene.</p>
+<p><b>Treatment:</b> Antimicrobial medicines.</p>
+</div>
+</div>
+
+<!-- 30 Pneumonia -->
+<div class="topic">
+<h4>Pneumonia</h4>
+<p>Lung infection.</p>
+<button onclick="toggleDetails('d30')">Read More →</button>
+<div class="details" id="d30">
+<p><b>Description:</b> Infection that inflames air sacs in lungs.</p>
+<p><b>Symptoms:</b> Cough, fever, breathing difficulty.</p>
+<p><b>Prevention:</b> Vaccination.</p>
+<p><b>Treatment:</b> Antibiotics or antivirals.</p>
+</div>
+</div>
+
+<!-- 31 Influenza -->
+<div class="topic">
+<h4>Influenza</h4>
+<p>Seasonal flu virus.</p>
+<button onclick="toggleDetails('d31')">Read More →</button>
+<div class="details" id="d31">
+<p><b>Description:</b> Viral respiratory infection.</p>
+<p><b>Symptoms:</b> Fever, body aches.</p>
+<p><b>Prevention:</b> Vaccination.</p>
+<p><b>Treatment:</b> Rest, fluids, antivirals.</p>
+</div>
+</div>
+
+<!-- 32 Long COVID -->
+<div class="topic">
+<h4>COVID-19 Long Effects</h4>
+<p>Post-COVID conditions.</p>
+<button onclick="toggleDetails('d32')">Read More →</button>
+<div class="details" id="d32">
+<p><b>Description:</b> Persistent symptoms after COVID recovery.</p>
+<p><b>Symptoms:</b> Fatigue, brain fog.</p>
+<p><b>Prevention:</b> Vaccination.</p>
+<p><b>Treatment:</b> Symptom management.</p>
+</div>
+</div>
+
+<!-- 33 Polio -->
+<div class="topic">
+<h4>Polio</h4>
+<p>Viral paralysis disease.</p>
+<button onclick="toggleDetails('d33')">Read More →</button>
+<div class="details" id="d33">
+<p><b>Description:</b> Polio affects nerves and can cause paralysis.</p>
+<p><b>Symptoms:</b> Muscle weakness.</p>
+<p><b>Prevention:</b> Vaccination.</p>
+<p><b>Treatment:</b> Supportive care.</p>
+</div>
+</div>
+
+<!-- 34 Schistosomiasis -->
+<div class="topic">
+<h4>Schistosomiasis</h4>
+<p>Parasitic waterborne disease.</p>
+<button onclick="toggleDetails('d34')">Read More →</button>
+<div class="details" id="d34">
+<p><b>Description:</b> Caused by parasites in freshwater.</p>
+<p><b>Symptoms:</b> Abdominal pain, blood in urine.</p>
+<p><b>Prevention:</b> Avoid unsafe water.</p>
+<p><b>Treatment:</b> Praziquantel.</p>
+</div>
+</div>
+
+<!-- 35 Onchocerciasis -->
+<div class="topic">
+<h4>Onchocerciasis</h4>
+<p>River blindness.</p>
+<button onclick="toggleDetails('d35')">Read More →</button>
+<div class="details" id="d35">
+<p><b>Description:</b> Parasitic disease spread by blackflies.</p>
+<p><b>Symptoms:</b> Itching, vision loss.</p>
+<p><b>Prevention:</b> Vector control.</p>
+<p><b>Treatment:</b> Ivermectin.</p>
+</div>
+</div>
+
+<!-- 36 Sleeping Sickness -->
+<div class="topic">
+<h4>Sleeping Sickness</h4>
+<p>Tsetse fly disease.</p>
+<button onclick="toggleDetails('d36')">Read More →</button>
+<div class="details" id="d36">
+<p><b>Description:</b> Parasitic disease affecting the brain.</p>
+<p><b>Symptoms:</b> Sleep disturbance.</p>
+<p><b>Prevention:</b> Avoid tsetse flies.</p>
+<p><b>Treatment:</b> Antiparasitic drugs.</p>
+</div>
+</div>
+
+<!-- 37 Leishmaniasis -->
+<div class="topic">
+<h4>Leishmaniasis</h4>
+<p>Sandfly-transmitted disease.</p>
+<button onclick="toggleDetails('d37')">Read More →</button>
+<div class="details" id="d37">
+<p><b>Description:</b> Parasitic infection affecting skin or organs.</p>
+<p><b>Symptoms:</b> Skin ulcers, fever.</p>
+<p><b>Prevention:</b> Bed nets.</p>
+<p><b>Treatment:</b> Antiparasitic drugs.</p>
+</div>
+</div>
+
+<!-- 38 Ebola -->
+<div class="topic">
+<h4>Ebola</h4>
+<p>Severe viral hemorrhagic fever.</p>
+<button onclick="toggleDetails('d38')">Read More →</button>
+<div class="details" id="d38">
+<p><b>Description:</b> Highly infectious viral disease.</p>
+<p><b>Symptoms:</b> Fever, bleeding.</p>
+<p><b>Prevention:</b> Infection control.</p>
+<p><b>Treatment:</b> Supportive care.</p>
+</div>
+</div>
+
+<!-- 39 Zika Virus -->
+<div class="topic">
+<h4>Zika Virus</h4>
+<p>Mosquito-borne virus.</p>
+<button onclick="toggleDetails('d39')">Read More →</button>
+<div class="details" id="d39">
+<p><b>Description:</b> Viral infection affecting pregnancy.</p>
+<p><b>Symptoms:</b> Mild fever, rash.</p>
+<p><b>Prevention:</b> Mosquito control.</p>
+<p><b>Treatment:</b> Supportive care.</p>
+</div>
+</div>
+
+<!-- 40 Dengue Fever -->
+<div class="topic">
+<h4>Dengue Fever</h4>
+<p>Mosquito-borne viral disease.</p>
+<button onclick="toggleDetails('d40')">Read More →</button>
+<div class="details" id="d40">
+<p><b>Description:</b> Causes severe flu-like illness.</p>
+<p><b>Symptoms:</b> High fever, joint pain.</p>
+<p><b>Prevention:</b> Mosquito control.</p>
+<p><b>Treatment:</b> Fluids, pain control.</p>
+</div>
+</div>
+
+<!-- 41 Yellow Fever -->
+<div class="topic">
+<h4>Yellow Fever</h4>
+<p>Viral hemorrhagic disease.</p>
+<button onclick="toggleDetails('d41')">Read More →</button>
+<div class="details" id="d41">
+<p><b>Description:</b> Viral infection spread by mosquitoes.</p>
+<p><b>Symptoms:</b> Fever, jaundice.</p>
+<p><b>Prevention:</b> Vaccination.</p>
+<p><b>Treatment:</b> Supportive care.</p>
+</div>
+</div>
+
+<!-- 42 Rheumatic Fever -->
+<div class="topic">
+<h4>Rheumatic Fever</h4>
+<p>Post-strep complication.</p>
+<button onclick="toggleDetails('d42')">Read More →</button>
+<div class="details" id="d42">
+<p><b>Description:</b> Inflammatory disease after throat infection.</p>
+<p><b>Symptoms:</b> Joint pain, heart damage.</p>
+<p><b>Prevention:</b> Treat strep throat.</p>
+<p><b>Treatment:</b> Antibiotics, anti-inflammatory drugs.</p>
+</div>
+</div>
+
+<!-- 43 Tetanus -->
+<div class="topic">
+<h4>Tetanus</h4>
+<p>Bacterial toxin disease.</p>
+<button onclick="toggleDetails('d43')">Read More →</button>
+<div class="details" id="d43">
+<p><b>Description:</b> Causes muscle stiffness.</p>
+<p><b>Symptoms:</b> Lockjaw.</p>
+<p><b>Prevention:</b> Vaccination.</p>
+<p><b>Treatment:</b> Antitoxin and care.</p>
+</div>
+</div>
+
+<!-- 44 Anthrax -->
+<div class="topic">
+<h4>Anthrax</h4>
+<p>Livestock-related disease.</p>
+<button onclick="toggleDetails('d44')">Read More →</button>
+<div class="details" id="d44">
+<p><b>Description:</b> Bacterial disease from animals.</p>
+<p><b>Symptoms:</b> Skin sores, fever.</p>
+<p><b>Prevention:</b> Animal vaccination.</p>
+<p><b>Treatment:</b> Antibiotics.</p>
+</div>
+</div>
+
+<!-- 45 Brucellosis -->
+<div class="topic">
+<h4>Brucellosis</h4>
+<p>Dairy-related bacterial disease.</p>
+<button onclick="toggleDetails('d45')">Read More →</button>
+<div class="details" id="d45">
+<p><b>Description:</b> Infection from unpasteurized milk.</p>
+<p><b>Symptoms:</b> Fever, joint pain.</p>
+<p><b>Prevention:</b> Pasteurized dairy.</p>
+<p><b>Treatment:</b> Antibiotics.</p>
+</div>
+</div>
+
+<!-- 46 Hunger & Famine Effects -->
+<div class="topic">
+<h4>Hunger & Famine Effects</h4>
+<p>Food insecurity health impact.</p>
+<button onclick="toggleDetails('d46')">Read More →</button>
+<div class="details" id="d46">
+<p><b>Description:</b> Long-term lack of food harms health.</p>
+<p><b>Symptoms:</b> Weakness, stunting.</p>
+<p><b>Prevention:</b> Food security programs.</p>
+<p><b>Treatment:</b> Nutritional rehabilitation.</p>
+</div>
+</div>
+
+<!-- 47 Substance Abuse -->
+<div class="topic">
+<h4>Substance Abuse</h4>
+<p>Harmful drug use.</p>
+<button onclick="toggleDetails('d47')">Read More →</button>
+<div class="details" id="d47">
+<p><b>Description:</b> Misuse of drugs or substances.</p>
+<p><b>Symptoms:</b> Dependency.</p>
+<p><b>Prevention:</b> Awareness.</p>
+<p><b>Treatment:</b> Rehabilitation.</p>
+</div>
+</div>
+
+<!-- 48 Smoking & Lung Health -->
+<div class="topic">
+<h4>Smoking & Lung Health</h4>
+<p>Tobacco-related disease.</p>
+<button onclick="toggleDetails('d48')">Read More →</button>
+<div class="details" id="d48">
+<p><b>Description:</b> Smoking damages lungs.</p>
+<p><b>Symptoms:</b> Chronic cough.</p>
+<p><b>Prevention:</b> Avoid smoking.</p>
+<p><b>Treatment:</b> Cessation programs.</p>
+</div>
+</div>
+
+<!-- 49 Alcoholism -->
+<div class="topic">
+<h4>Alcoholism</h4>
+<p>Alcohol dependency.</p>
+<button onclick="toggleDetails('d49')">Read More →</button>
+<div class="details" id="d49">
+<p><b>Description:</b> Excessive alcohol use disorder.</p>
+<p><b>Symptoms:</b> Liver disease.</p>
+<p><b>Prevention:</b> Education.</p>
+<p><b>Treatment:</b> Counseling.</p>
+</div>
+</div>
+
+<!-- 50 Drug Resistance -->
+<div class="topic">
+<h4>Drug Resistance</h4>
+<p>Antibiotic resistance.</p>
+<button onclick="toggleDetails('d50')">Read More →</button>
+<div class="details" id="d50">
+<p><b>Description:</b> Germs resist medicines.</p>
+<p><b>Symptoms:</b> Persistent infections.</p>
+<p><b>Prevention:</b> Proper drug use.</p>
+<p><b>Treatment:</b> Specialized antibiotics.</p>
+</div>
+</div>
+
+<!-- 51 Maternal Health -->
+<div class="topic">
+<h4>Maternal Health</h4>
+<p>Pregnancy and childbirth care.</p>
+<button onclick="toggleDetails('d51')">Read More →</button>
+<div class="details" id="d51">
+<p><b>Description:</b> Health of women during pregnancy.</p>
+<p><b>Symptoms:</b> Complications.</p>
+<p><b>Prevention:</b> Antenatal care.</p>
+<p><b>Treatment:</b> Skilled medical care.</p>
+</div>
+</div>
+
+<!-- 52 Child Health -->
+<div class="topic">
+<h4>Child Health</h4>
+<p>Children’s physical well-being.</p>
+<button onclick="toggleDetails('d52')">Read More →</button>
+<div class="details" id="d52">
+<p><b>Description:</b> Growth and development.</p>
+<p><b>Symptoms:</b> Poor growth.</p>
+<p><b>Prevention:</b> Immunization.</p>
+<p><b>Treatment:</b> Pediatric care.</p>
+</div>
+</div>
+
+<!-- 53 Occupational Diseases -->
+<div class="topic">
+<h4>Occupational Diseases</h4>
+<p>Workplace-related illnesses.</p>
+<button onclick="toggleDetails('d53')">Read More →</button>
+<div class="details" id="d53">
+<p><b>Description:</b> Illnesses caused by work exposure.</p>
+<p><b>Symptoms:</b> Breathing problems.</p>
+<p><b>Prevention:</b> Safety measures.</p>
+<p><b>Treatment:</b> Medical care.</p>
+</div>
+</div>
+
+<!-- 54 Environmental Health -->
+<div class="topic">
+<h4>Environmental Health</h4>
+<p>Environment-related diseases.</p>
+<button onclick="toggleDetails('d54')">Read More →</button>
+<div class="details" id="d54">
+<p><b>Description:</b> Health affected by pollution.</p>
+<p><b>Symptoms:</b> Respiratory issues.</p>
+<p><b>Prevention:</b> Clean environment.</p>
+<p><b>Treatment:</b> Exposure reduction.</p>
+</div>
+</div>
+
+<!-- 55 Road Traffic Injuries -->
+<div class="topic">
+<h4>Road Traffic Injuries</h4>
+<p>Injuries from accidents.</p>
+<button onclick="toggleDetails('d55')">Read More →</button>
+<div class="details" id="d55">
+<p><b>Description:</b> Injuries from road accidents.</p>
+<p><b>Symptoms:</b> Trauma.</p>
+<p><b>Prevention:</b> Road safety.</p>
+<p><b>Treatment:</b> Emergency care.</p>
+</div>
+</div>
+
+<!-- 56 Animal-Borne Diseases -->
+<div class="topic">
+<h4>Animal-Borne Diseases</h4>
+<p>Zoonotic infections.</p>
+<button onclick="toggleDetails('d56')">Read More →</button>
+<div class="details" id="d56">
+<p><b>Description:</b> Diseases transmitted from animals.</p>
+<p><b>Symptoms:</b> Fever.</p>
+<p><b>Prevention:</b> Animal control.</p>
+<p><b>Treatment:</b> Depends on disease.</p>
+</div>
+</div>
+
+<!-- 57 Nutrition Deficiency -->
+<div class="topic">
+<h4>Nutrition Deficiency</h4>
+<p>Lack of nutrients.</p>
+<button onclick="toggleDetails('d57')">Read More →</button>
+<div class="details" id="d57">
+<p><b>Description:</b> Inadequate vitamins or minerals.</p>
+<p><b>Symptoms:</b> Weakness.</p>
+<p><b>Prevention:</b> Balanced diet.</p>
+<p><b>Treatment:</b> Supplementation.</p>
+</div>
+</div>
+
+<!-- 58 Anemia -->
+<div class="topic">
+<h4>Anemia</h4>
+<p>Low red blood cells.</p>
+<button onclick="toggleDetails('d58')">Read More →</button>
+<div class="details" id="d58">
+<p><b>Description:</b> Reduced oxygen-carrying capacity.</p>
+<p><b>Symptoms:</b> Fatigue, dizziness.</p>
+<p><b>Prevention:</b> Iron-rich diet.</p>
+<p><b>Treatment:</b> Iron supplements.</p>
+</div>
+</div>
+
+<!-- 59 Vitamin A Deficiency -->
+<div class="topic">
+<h4>Vitamin A Deficiency</h4>
+<p>Essential vitamin deficiency.</p>
+<button onclick="toggleDetails('d59')">Read More →</button>
+<div class="details" id="d59">
+<p><b>Description:</b> Affects vision and immunity.</p>
+<p><b>Symptoms:</b> Night blindness.</p>
+<p><b>Prevention:</b> Vitamin A foods.</p>
+<p><b>Treatment:</b> Supplementation.</p>
+</div>
+</div>
+
+<!-- 60 Iron Deficiency -->
+<div class="topic">
+<h4>Iron Deficiency</h4>
+<p>Common nutritional disorder.</p>
+<button onclick="toggleDetails('d60')">Read More →</button>
+<div class="details" id="d60">
+<p><b>Description:</b> Inadequate iron intake.</p>
+<p><b>Symptoms:</b> Fatigue, pale skin.</p>
+<p><b>Prevention:</b> Iron-rich foods.</p>
+<p><b>Treatment:</b> Iron supplements.</p>
+</div>
+</div>
+</div>
+
+</div>
+
+<footer>
+<p>© 2025 EthiHealth | Health Awareness Platform for All Ethiopians</p>
+</footer>
+
+</body>
+</html>
+

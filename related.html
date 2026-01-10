@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Health Organizations - EthiHealth</title>
+
+  <style>
+    
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #d4f1f4, #ffffff);
+      margin: 0;
+      padding: 0;
+      color: #333;
+      overflow-x: hidden;
+    }
+nav{
+  background-color: rgba(0, 128, 128, 0.2) ;
+  height: 30px;
+  padding: 10px;
+}
+    h1 {
+      text-align: center;
+      color: #116466;
+      padding-top: 40px;
+      font-size: 32px;
+      letter-spacing: 1px;
+    }
+
+    .topics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      padding: 50px 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .topic {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: all 0.4s ease;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .topic.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .topic:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 8px 20px rgba(0, 128, 128, 0.2);
+    }
+
+    .topic img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .topic:hover img {
+      transform: scale(1.1);
+    }
+
+    .topic h4 {
+      color: #1b7a6f;
+      margin-bottom: 12px;
+      font-size: 18px;
+    }
+
+    .topic a {
+      color: #ffffff;
+      background-color: #1b7a6f;
+      padding: 10px 18px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s;
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    .topic a:hover {
+      background-color: #145c56;
+    }
+
+    footer {
+      background-color: #1b7a6f;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+    nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
+
+  </style>
+</head>
+<body>
+
+  <h1>Health & Emergency Organizations</h1>
+  <nav>
+    <a href="1.html">Home</a>
+    <a href="clinics.html">Clinics</a>
+    <a href="health-topics.html">Health Topics</a>
+    <a href="about.html">About</a>
+  </nav>
+
+  <div class="topics">
+
+    <div class="topic fade-in">
+    
+      <h4>ETHIOPIAN RED CROSS</h4>
+      <a href="https://redcrosseth.org/" target="_blank">Read More →</a>
+    </div>
+
+    <div class="topic fade-in">
+    
+      <h4>TEBITA AMBULANCE PRE HOSPITAL</h4>
+      <a href="https://www.tebitambulance.com/" target="_blank">Read More →</a>
+    </div>
+
+    <div class="topic fade-in">
+      
+      <h4>ETHIOPIAN MINISTRY OF HEALTH</h4>
+      <a href="https://www.moh.gov.et/" target="_blank">Read More →</a>
+    </div>
+
+    <div class="topic fade-in">
+      
+      <h4>ETHIOPIAN FIRE DEPARTMENT</h4>
+      <a href="https://www.addisfire.gov.et/" target="_blank">Read More →</a>
+    </div>
+
+    <div class="topic fade-in">
+      
+      <h4>ARSHO MEDICAL LABORATORIES</h4>
+      <a href="https://www.arsholab.com/" target="_blank">Read More →</a>
+    </div>
+
+    
+
+    <div class="topic fade-in">
+     
+      <h4>RIDE</h4>
+      <a href="https://ride8294.com/" target="_blank">Read More →</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2025 EthiHealth | Empowering Communities with Trusted Health Information</p>
+  </footer>
+
+  
+  <script>
+    // Select all fade-in elements
+    const faders = document.querySelectorAll('.fade-in');
+    
+    const appearOptions = { threshold: 0.2 };
+    
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+    
+    faders.forEach(fader => appearOnScroll.observe(fader));
+  </script>
+
+</body>
+</html>
